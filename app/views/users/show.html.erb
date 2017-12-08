@@ -1,0 +1,16 @@
+<% if flash[:notice] %>
+	<div class="notice"><%= flash[:notice] %></div>
+<% end %>
+<% if @user == current_user %>
+	<%= link_to "Log Out", logout_path %>
+	<%= link_to "See attractions", attractions_path %>
+	<h2>Name: <%= @user.name %></h2>
+	<p>Mood: <%= @user.mood %></p>
+	<p>Height: <%= @user.height %></p>
+	<p>Tickets: <%= @user.tickets %></p>
+	<% if @user.admin %>
+		<p>ADMIN</p>
+	<% end %>
+<% else %>
+	<% controller.redirect_to root_url %>
+<% end %>
